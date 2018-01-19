@@ -35,6 +35,31 @@ def pull_screenshot():
 
 
 def jump(distance):
+    print(distance)
+    global count
+    if distance < 350:
+        count += 1
+        if count >= 3:  # 连续3次出现误差进行修正.
+            print("revise the mistake....")
+            distance *= 1.18
+            count = 0
+    else:
+        count -= 1
+        if count < 0:
+            count = 0
+    if distance < 200:
+        print("distance < 200")
+        distance *= 1.24
+    elif distance < 300:
+        print("distance < 300")
+        distance *= 1.18
+    elif distance < 350:
+        print("distance < 350")
+        distance *= 1.15
+    # elif distance > 650:
+    #     distance *= 0.95
+    else:
+        distance *= 1.09
     press_time = distance * 1.35
     press_time = int(press_time)
     cmd = 'adb shell input swipe 320 410 320 410 ' + str(press_time)
