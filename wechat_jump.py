@@ -56,10 +56,10 @@ def jump(distance):
     elif distance < 350:
         print("distance < 350")
         distance *= 1.15
-    # elif distance > 650:
-    #     distance *= 0.95
-    else:
-        distance *= 1.09
+    elif distance > 650:
+        distance *= 0.95
+    # else:
+    #     distance *= 1.09
     press_time = distance * 1.35
     press_time = int(press_time)
     cmd = 'adb shell input swipe 320 410 320 410 ' + str(press_time)
